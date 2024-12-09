@@ -17,6 +17,5 @@ public class Main {
         dittaRiparazioni1.showTecnici();
         dittaRiparazioni1.newTecnico("Lorenzo");
         dittaRiparazioni1.showTecnici();
-        dittaRiparazioni1.showMaggiorePriorita(DittaRiparazioni);
     }
 }

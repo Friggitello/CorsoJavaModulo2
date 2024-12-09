@@ -8,6 +8,7 @@ public class Persona {
     public Integer id;
     public String nome;
     public String cognome;
+    public String mese;
     public LocalDate dataNascita;
     public String luogoNascita;
     public String codiceFiscale;
@@ -25,12 +26,13 @@ public class Persona {
         this.cognome = cognome;
     }
 
-    @Override //Metadati della classe
+    @Override
     public String toString() {
-        return "Persona {" +
+        return "Persona{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
+                ", mese='" + mese + '\'' +
                 ", dataNascita=" + dataNascita +
                 ", luogoNascita='" + luogoNascita + '\'' +
                 ", codiceFiscale='" + codiceFiscale + '\'' +
