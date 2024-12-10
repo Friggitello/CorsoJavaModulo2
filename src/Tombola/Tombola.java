@@ -3,6 +3,7 @@ package Tombola;
 import java.util.Random;
 
 public class Tombola {
+    public static boolean risultato = false;
     public static void tombola(int[][] cartella){
         if (cartella.length != 3 || cartella[0].length != 5){
             System.out.println("Cartella non valida");
@@ -18,6 +19,7 @@ public class Tombola {
         int countPrimaRiga = 0;
         int countSecondaRiga = 0;
         int countTerzaRiga = 0;
+
 
         while(true){
             int nextNumeroEstratto = random.nextInt(0,90) + 1;
@@ -40,6 +42,7 @@ public class Tombola {
             }
             if (countPrimaRiga == 5 && countSecondaRiga == 5 && countTerzaRiga == 5){
                 System.out.println("TOMBOLA!!");
+                risultato = true;
                 return;
             }
             if (countEstratti == 20){
@@ -78,8 +81,12 @@ public class Tombola {
     }
 
     public static void main(String[] args) {
+        int count = 0;
         int[][] cartella = {{5,12,52,71,89},{9,10,30,68,90},{1,21,44,66,88}};
-        tombola(cartella);
+        while (!risultato){
+            tombola(cartella);
+            System.out.println(count++);
+        }
     }
 
 
