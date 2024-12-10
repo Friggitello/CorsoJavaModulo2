@@ -77,7 +77,6 @@ public class Tombola {
                 break;
             default:
         }
-
     }
 
     public static void main(String[] args) {
@@ -88,6 +87,4 @@ public class Tombola {
             System.out.println(count++);
         }
     }
-
-
 }
