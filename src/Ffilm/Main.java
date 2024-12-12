@@ -21,7 +21,7 @@ public class Main {
         Film[] risultato = new Film[0];
         for (Film film : array){
             String regista = film.getRegista();
-            if (film.getRegista().equals(registaRichiesto)){
+            if (film.getRegista().equalsIgnoreCase(registaRichiesto)){
                 risultato = ArrayUtils.addFilm(risultato, film);
             }
         }

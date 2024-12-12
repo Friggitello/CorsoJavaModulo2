@@ -8,6 +8,7 @@ public class Film {
     private Generi genere;
     private String regista;
     private boolean disponibile;
+    private boolean inVisione;
 
     public Film(String nome, int dataUscita, Generi genere, String regista) {
         this.nome = nome;
@@ -15,6 +16,7 @@ public class Film {
         this.genere = genere;
         this.regista = regista;
         this.disponibile = true;
+        this.inVisione = false;
     }
 
     public Film(String nome, Generi genere) {
@@ -62,25 +64,33 @@ public class Film {
         this.disponibile = disponibile;
     }
 
+    public boolean isInVisione() { return inVisione; }
+
+    public void setInVisione(boolean inVisione) { this.inVisione = inVisione; }
+
+
+
     public void visionaFilm(){
         if (!disponibile){
             System.out.printf("Il film non è disponibile\n");
-        }
-        this.disponibile = false;
+        }else
+            this.inVisione = true;
     }
 
     public void terminaVisione(){
-        this.disponibile = true;
+        if (isInVisione()){
+            this.inVisione = false;
+        }
+        System.out.println("Il film non è piu in visione!");
     }
 
     public String infoFilm(){
-        return "Film{" +
+        return
                 "nome='" + nome + '\'' +
                 ", dataUscita=" + dataUscita +
                 ", genere=" + genere +
-                ", regista='" + regista + '\'' +
-                ", disponibile=" + disponibile +
-                '}';
+                ", regista='" + regista + '\''
+                ;
         }
 
     @Override
