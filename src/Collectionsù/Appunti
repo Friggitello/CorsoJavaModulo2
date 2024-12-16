@@ -1,0 +1,99 @@
+Collections
+--------------------------------------
+Una collection è un oggetto che raggruppa più elementi all'interno di una singola unità
+
+Sono utilizzate per memorizzare, recuperare, manipolare, e comunicare oggetti che formano
+un gruppo "naturale", ossia oggetti concettualmente dello stesso tipo
+es. mazzo di carte, gruppo di studenti
+
+Collection framework, architettura per manipolare collections,
+composta da : Interfacce, Implementazioni, Algoritmi
+
+Interfacce:
+    Tipi astratti di dato che rappresentano le collections
+    Permettono di manipolare collections indipendentemente dai dettagli dell'implementazione
+    Es. L'interfaccia map per le mappe
+
+Implementazioni:
+    Implementazione concreta delle interfacce della collection
+    Sono strutture dati riutilizzabili
+    Es. La classe HashMap
+
+Algoritmi:
+    Metodi che eseguono computazioni molto utili nello sviluppo di programmi piu o meno
+    complessi, tra cui ricerca e ordinamento
+    Questi algoritmi sono polimorfici, ossia usati su differenti implementazioni
+    Sono funzionalità riutilizzabili
+    Es. java.util.Collections.sort(List<T> list) puo ordinare qualsiasi tipo di oggetto
+    List, indipendentemente dall'implementazione finale dell'interfaccia List che verrà usata
+
+Benefici:
+    Riduce lo sforzo del programmatore- funzioni gia testate e funzionanti
+    Migliora le performance del programma, poiché algoritmi e strutture sono ad alte performance
+    Riduce lo sforzo necessario per capire nuove API
+    Riduce lo sforzo necessario per creare nuove API
+    Favorisce il riutilizzo del codice, poiché le nuove strutture dati conformi all'interfaccia
+    standard saranno immediatamente compatibili e dunque riutilizzabili ovunque.
+
+Generics nelle collections
+
+E' importante sottolineare che tutte le interfacce del collection framework sono generiche
+Quando dichiariamo un'istanza di Collection possiamo (e dovremmo) specificare il tipo di oggetto
+contenuto nella collection
+In questo modo, il compilatore può verificare a tempo di compilazione che il tipo di oggetto che viene
+inserito nella collection sia giusto.
+
+Core Collection
+
+La radice della gerarchia delle collection
+Minimo comune denominatore, implementato da tutte le collection
+Rappresenta un gruppo di oggetti
+Utilizzato nel caso in cui si voglia essere piu generici possibile riguardo il tipo di collection atteso
+
+List
+
+Modella il concetto astratto di lista ordinata
+Rappresenta una collection che può contenere duplicati
+Rende possibile iterare gli elementi ed accedere posizionalmente ad ognuno di essi tramite indice
+
+Java mette a disposizione 2 implementazioni polivalenti dell'interfaccia List:
+-ArrayList: memorizza gli elementi in una lista ridimensionale(la cui grandezza viene gestita
+ in automatico). Utilizza un array internamente per memorizzare gli elementi.
+ In generale, offre le performance migliori (O(1) nella ricerca), tranne nei casi
+ di inserimento(può richiedere l'aumento di grandezza dell'array) e rimozione(va cercato l'elemento)
+
+-LinkedList: memorizza gli elementi in una doppia lista collegata. E' piu lenta dell'ArrayList
+ nel caso della ricerca di un oggetto nella lista (O(n)), ma è molto veloce nei casi di
+ aggiunta o rimozione (O(1)). Mantiene l'ordine in base all'inserimento.
+
+Metodi List: indexOf, add, remove, get, sort, sublist
+
+Set
+
+Modella il concetto astratto di insieme matematico
+Rappresenta una collection che non puo contenere duplicati
+Quando la utilizzate, prestate particolare attenzione alle implementazioni di equals e hashCode che fornite
+Due istanze di tipo Set sono uguali se contengono gli stessi elementi
+
+Java mette a disposizione 3 implementazioni dell'interfaccia Set
+-HashSet:(general-purpose) memorizza gli elementi in una tabella hash e, percio, è la migliore in termini di performance
+ Tuttavia non garantisce l'ordinamento per quanto riguarda l'iterazione
+
+-TreeSet:(orting) memorizza e ordina gli elementi in base ai loro valori. E' sostanzialmente piu lento
+ dell'HashSet, ma mantiene l'ordinamento
+
+-LinkedHashSet:(insertion order) anch'essa è implementato tramite una tabella hash e, in piu, mantiene una LinkedList
+ e mantiene l'ordinamento degli elementi in base all'ordine di inserimento. E' un ottimo compromesso
+ perchè evita il disordine dell'HashSet, mantenendo un ordinamento ad un costo di poco superiore di performance.
+
+Metodi Set:isEmpty, add, remove, iterator, s1.containsAll(s2), s1.addAll(s2), s1.retainAll(s2), s1.removeAll(s2)
+
+Queue metodi: peek, offer, poll
+
+Deque
+Modella il concetto di coda
+Puo aggiungere e rimuovere sia dall'inizio che dalla fine
+Puo contenere duplicati
+Puo essere usata sia come Fifo che Lifo
+
+Deque metodi: peekFirst, peekLast, offerFirst, offerLast, pollFirst, pollLast
