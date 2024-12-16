@@ -79,7 +79,7 @@ Java mette a disposizione 3 implementazioni dell'interfaccia Set
 -HashSet:(general-purpose) memorizza gli elementi in una tabella hash e, percio, è la migliore in termini di performance
  Tuttavia non garantisce l'ordinamento per quanto riguarda l'iterazione
 
--TreeSet:(orting) memorizza e ordina gli elementi in base ai loro valori. E' sostanzialmente piu lento
+-TreeSet:(sorting) memorizza e ordina gli elementi in base ai loro valori. E' sostanzialmente piu lento
  dell'HashSet, ma mantiene l'ordinamento
 
 -LinkedHashSet:(insertion order) anch'essa è implementato tramite una tabella hash e, in piu, mantiene una LinkedList
@@ -97,3 +97,50 @@ Puo contenere duplicati
 Puo essere usata sia come Fifo che Lifo
 
 Deque metodi: peekFirst, peekLast, offerFirst, offerLast, pollFirst, pollLast
+
+Concetto di mappa
+
+Una mappa rappresenta il tipo astratto che definisce una struttura dati in grado
+di memorizzare elementi nella forma di coppie chiave-valore
+Ogni elemento all'interno di una mappa è identificato da una determinata chiave
+Non possono esistere due chiavi uguali
+La chiave consente non solo di recuperare ed inserire un elemento in una mappa,
+ma anche di definire un ordinamento per le implementazioni che prevedono questa funzionalità
+
+Implementazioni mappe:
+-TreeMap: esempio di sortedMap che mantiene le chiavi ordinate
+
+-HashMap:non fornisce garanzia sull'ordinamento delle chiavi
+ -pro: piu efficiente
+ -contro: nessun ordinamento
+
+Mappe e collisioni
+
+HashMap:
+ fa un test di equals e hashCode definita nella classe di oggetti
+TreeMap:
+ test di uguaglianza fatto con compareTo
+
+metodi Map: put, get, containsKey, clear, keySet, values
+
+Nelle collection e nelle mappe non si possono utilizzare valori primitivi ma solo Wrapped
+
+Complessita computazionale
+
+Quanto un algoritmo è computazionalmente efficiente
+-La complessità temporale di un algoritmo rappresenta la quantita totale di tempo
+ che richiede per completare la sua esecuzione
+-Misurazione in Bih Oh (O) : worst case running time
+-Si utilizza n come parametro per identificare la grandezza dell'input
+-Es. se un algoritmo ha una complessità O(n) significa che la sua esecuzione
+ completa richiederà al massimo n procedure
+Bisogna sempre considerare il fattore n di ordine maggiore.
+
+Big omega : best case running time
+Big Theta : both best and worst case running time
+
+O(1): tempo costante (aggiunta rimozione dati)
+O(log(n)): tempo logaritmico, dato un input di grandezza n l'algoritmo eseguira al piu log(n)
+O(n): tempo lineare, ossia dato  un input di grandezza n, l'algoritmo eseguira al piu n operazioni
+O(nlog(n)): tempo "linearithmic", ossia dato un input di grandezza n, l'algoritmo eseguirà al piu
+            nlog(n) operazioni
