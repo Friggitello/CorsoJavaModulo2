@@ -2,6 +2,7 @@ package Compagnia_Shared_Mobilty.entities.noleggio;
 
 import Compagnia_Shared_Mobilty.entities.utente.Utente;
 import Compagnia_Shared_Mobilty.entities.veicolo.Veicolo;
+import Compagnia_Shared_Mobilty.validators.Validator;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +16,8 @@ public class Noleggio {
     private LocalDateTime end;
 
     public Noleggio(Veicolo veicolo, Utente utente) {
+        Validator.requireNotNull(veicolo);
+        Validator.requireNotNull(utente);
         this.id = ++idCounter;
         this.veicolo = veicolo;
         this.utente = utente;
@@ -22,9 +25,13 @@ public class Noleggio {
     }
 
     public Noleggio(Veicolo veicolo, Utente utente, LocalDateTime start) {
+        Validator.requireNotNull(veicolo);
+        Validator.requireNotNull(utente);
+        Validator.requireDateAfter(start,LocalDateTime.now());
         this.id = ++idCounter;
         this.veicolo = veicolo;
         this.utente = utente;
+        if (start.isBefore(LocalDateTime.now())) throw new IllegalArgumentException("La data non puo essere nel passato");
         this.start = start;
     }
 
@@ -59,5 +66,7 @@ public class Noleggio {
         this.end = end;
     }
 
-
+    public Boolean isNoleggioAttivo(){
+        return this.end == null;
+    }
 }

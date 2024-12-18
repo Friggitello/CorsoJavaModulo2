@@ -8,9 +8,9 @@ import java.util.HashMap;
 
 public class Database {
 
-    public static HashMap<Integer, Utente> utenti;
-    public static HashMap<Integer, Veicolo> veicoli;
-    public static HashMap<Integer, Noleggio> noleggi;
+    private static HashMap<Integer, Utente> utenti;
+    private static HashMap<Integer, Veicolo> veicoli;
+    private static HashMap<Integer, Noleggio> noleggi;
 
     public static void addUtente(Utente utente){
         utenti.put(utente.getId(), utente);
@@ -20,6 +20,9 @@ public class Database {
         veicoli.put(veicolo.getId(), veicolo);
     }
 
+    public static Veicolo getVeicoloById(Integer id){
+        return veicoli.get(id);
+    }
     public static void addNoleggio(Noleggio noleggio){
         noleggi.put(noleggio.getId(), noleggio);
     }
