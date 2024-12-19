@@ -17,7 +17,7 @@ import java.util.List;
 public class Utente {
     //Attributi
     private Integer id;
-    private static Integer idCounter;
+    private static Integer idCounter = 0;
     private String nome;
     private String cognome;
     private LocalDate dataNascita;
@@ -31,7 +31,7 @@ public class Utente {
         Validator.requireNotBlank(nome);
         Validator.requireNotBlank(cognome);
         Validator.requireDateBefore(dataNascita, LocalDate.now());
-        Validator.matchingPattern(codiceFiscale,"^[A-Z]{6}[0-9]{8}[A-Z]{2}[0-9]{2}[A-Z0-9]{3}$\n");
+        Validator.matchingPattern(codiceFiscale,"^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
         this.id = ++idCounter;
         this.nome = nome;
         this.cognome = cognome;
@@ -162,4 +162,15 @@ public class Utente {
         return veicoliDisponibili;
     }
 
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", dataNascita=" + dataNascita +
+                ", codiceFiscale='" + codiceFiscale + '\'' +
+                ", credito=" + credito +
+                '}';
+    }
 }

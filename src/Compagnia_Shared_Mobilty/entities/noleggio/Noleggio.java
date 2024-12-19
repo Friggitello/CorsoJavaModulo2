@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Noleggio {
 
     private Integer id;
-    private static Integer idCounter;
+    private static Integer idCounter = 0;
     private final Veicolo veicolo;
     private final Utente utente;
     private LocalDateTime start;
@@ -69,5 +69,16 @@ public class Noleggio {
 
     public Boolean isNoleggioAttivo(LocalDateTime time){
         return this.start.isBefore(time) && this.end == null;
+    }
+
+    @Override
+    public String toString() {
+        return "Noleggio{" +
+                "id=" + id +
+                ", veicolo=" + veicolo +
+                ", utente=" + utente +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
     }
 }

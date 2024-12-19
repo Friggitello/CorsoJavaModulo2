@@ -4,8 +4,8 @@ import Compagnia_Shared_Mobilty.entities.utente.TipoPatente;
 
 public class Furgoncino extends VeicoloMotore{
 
-    public Furgoncino(Double prezzo, TipoPatente tipoPatente) {
-        super(prezzo, tipoPatente);
+    public Furgoncino(Double prezzo, TipoPatente tipoPatente,String targa) {
+        super(prezzo, tipoPatente, targa);
     }
 
     @Override

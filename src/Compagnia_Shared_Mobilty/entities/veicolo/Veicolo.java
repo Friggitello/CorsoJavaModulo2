@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class Veicolo implements Casco{
 
     protected Integer id;
-    protected static Integer idCounter;
+    protected static Integer idCounter = 0;
     protected Double prezzo;
     protected Coordinata coordinata;
 

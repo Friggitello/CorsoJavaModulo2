@@ -11,7 +11,7 @@ public abstract class VeicoloMotore extends Veicolo {
 
     public VeicoloMotore(Double prezzo, TipoPatente tipoPatente, String targa) {
         super(prezzo);
-        Validator.matchingPattern(targa,"^[A-Z]{2}[0-9]{3}[A-Z]{2}$\n");
+        Validator.matchingPattern(targa,"^[A-Z]{2}\\d{3}[A-Z]{2}$");
         Validator.requireNotNull(tipoPatente);
         this.tipoPatente = tipoPatente;
         this.livelloCarburante = 1d;
@@ -40,5 +40,16 @@ public abstract class VeicoloMotore extends Veicolo {
 
     public void setLivelloCarburante(Double livelloCarburante) {
         this.livelloCarburante = livelloCarburante;
+    }
+
+    @Override
+    public String toString() {
+        return "VeicoloMotore{" +
+                " targa='" + targa + '\'' +
+                ", tipoPatente=" + tipoPatente +
+                ", livelloCarburante=" + livelloCarburante +
+                ", id=" + id +
+                ", prezzo=" + prezzo +
+                '}';
     }
 }
