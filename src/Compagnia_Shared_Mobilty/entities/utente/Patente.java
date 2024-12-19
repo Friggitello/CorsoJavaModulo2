@@ -1,5 +1,7 @@
 package Compagnia_Shared_Mobilty.entities.utente;
 
+import Compagnia_Shared_Mobilty.validators.Validator;
+
 import java.time.LocalDate;
 
 public class Patente {
@@ -13,6 +15,10 @@ public class Patente {
 
     public Patente(String numeroPatente, LocalDate scadenza, TipoPatente tipoPatente, Utente utente) {
         this.id = ++idCounter;
+        Validator.matchingPattern(numeroPatente,"^[A-Z]{2}\\d{7}[A-Z]$\n");
+        Validator.requireDateAfter(scadenza, LocalDate.now());
+        Validator.requireNotNull(tipoPatente);
+        Validator.requireNotNull(utente);
         this.numeroPatente = numeroPatente;
         this.scadenza = scadenza;
         this.tipoPatente = tipoPatente;

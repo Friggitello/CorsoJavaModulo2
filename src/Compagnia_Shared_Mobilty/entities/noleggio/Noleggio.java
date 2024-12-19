@@ -4,6 +4,7 @@ import Compagnia_Shared_Mobilty.entities.utente.Utente;
 import Compagnia_Shared_Mobilty.entities.veicolo.Veicolo;
 import Compagnia_Shared_Mobilty.validators.Validator;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Noleggio {
@@ -27,7 +28,7 @@ public class Noleggio {
     public Noleggio(Veicolo veicolo, Utente utente, LocalDateTime start) {
         Validator.requireNotNull(veicolo);
         Validator.requireNotNull(utente);
-        Validator.requireDateAfter(start,LocalDateTime.now());
+        Validator.requireDateTimeAfter(start,LocalDateTime.now());
         this.id = ++idCounter;
         this.veicolo = veicolo;
         this.utente = utente;
@@ -66,7 +67,7 @@ public class Noleggio {
         this.end = end;
     }
 
-    public Boolean isNoleggioAttivo(){
-        return this.end == null;
+    public Boolean isNoleggioAttivo(LocalDateTime time){
+        return this.start.isBefore(time) && this.end == null;
     }
 }

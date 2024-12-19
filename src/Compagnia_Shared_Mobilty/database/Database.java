@@ -4,7 +4,9 @@ import Compagnia_Shared_Mobilty.entities.noleggio.Noleggio;
 import Compagnia_Shared_Mobilty.entities.utente.Utente;
 import Compagnia_Shared_Mobilty.entities.veicolo.Veicolo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Database {
 
@@ -27,5 +29,21 @@ public class Database {
         noleggi.put(noleggio.getId(), noleggio);
     }
 
+    public static List<Noleggio> getNoleggiByVeicoloId(Integer id_veicolo){
+        List<Noleggio> myNoleggi = new ArrayList<>();
+        for (Integer id : noleggi.keySet()){
+            Noleggio n = noleggi.get(id);
+            if (n.getVeicolo().getId().equals(id_veicolo)){
+                myNoleggi.add(n);
+            }
+        }
+        return myNoleggi;
+    }
 
+    public static List<Veicolo> getAllVeicoli() {
+        return veicoli
+                .values()
+                .stream()
+                .toList();
+    }
 }

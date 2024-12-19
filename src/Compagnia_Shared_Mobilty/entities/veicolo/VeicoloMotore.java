@@ -1,6 +1,7 @@
 package Compagnia_Shared_Mobilty.entities.veicolo;
 
 import Compagnia_Shared_Mobilty.entities.utente.TipoPatente;
+import Compagnia_Shared_Mobilty.validators.Validator;
 
 public abstract class VeicoloMotore extends Veicolo {
 
@@ -8,10 +9,13 @@ public abstract class VeicoloMotore extends Veicolo {
     protected TipoPatente tipoPatente;
     protected Double livelloCarburante; //valore tra 0 ed 1 che rappresenta la percentuale di serbatoio piena
 
-    public VeicoloMotore(Double prezzo, TipoPatente tipoPatente) {
+    public VeicoloMotore(Double prezzo, TipoPatente tipoPatente, String targa) {
         super(prezzo);
+        Validator.matchingPattern(targa,"^[A-Z]{2}[0-9]{3}[A-Z]{2}$\n");
+        Validator.requireNotNull(tipoPatente);
         this.tipoPatente = tipoPatente;
         this.livelloCarburante = 1d;
+        this.targa = targa;
     }
 
     public String getTarga() {

@@ -7,7 +7,21 @@ import Compagnia_Shared_Mobilty.entities.utente.Utente;
 import Compagnia_Shared_Mobilty.entities.veicolo.Veicolo;
 import Compagnia_Shared_Mobilty.mappers.UtenteMapper;
 
+import java.util.List;
+
 public class Admin {
+
+    private static Admin instance;
+
+    private Admin() { }
+
+    public static Admin getInstance() {
+        if (instance != null) return instance;
+        else {
+            instance = new Admin();
+            return instance;
+        }
+    }
 
     public static Utente register(UtenteRegisterRequest request){
         Utente utente = UtenteMapper.toEntity(request);
@@ -24,9 +38,15 @@ public class Admin {
         return Database.getVeicoloById(id);
     }
 
-    public static Noleggio insertNoleggio(Noleggio noleggio){
+    public static void insertNoleggio(Noleggio noleggio){
         Database.addNoleggio(noleggio);
-        return noleggio;
     }
 
+    public static List<Noleggio> getNoleggiById(Integer id_veicolo)   {
+        return Database.getNoleggiByVeicoloId(id_veicolo);
+    }
+
+    public static List<Veicolo> getAllVeicoli(){
+        return Database.getAllVeicoli();
+    }
 }
